@@ -1,0 +1,236 @@
+<p>testiranje-reg works!</p>
+
+<h3>Registracija korisnika</h3>
+
+<form>
+  <table>
+    <tr>
+      <td>Ime:</td>
+
+      <td>
+        <input type="text" name="firstname" [(ngModel)]="reg_user_firstname" />
+      </td>
+      <td>
+        <div *ngIf="firstname_invalid" class="req_messages">
+          Obavezno polje!
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Prezime:</td>
+
+      <td>
+        <input type="text" name="lastname" [(ngModel)]="reg_user_lastname" />
+      </td>
+      <td>
+        <div *ngIf="lastname_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Korisnicko ime:</td>
+
+      <td>
+        <input type="text" name="username" [(ngModel)]="reg_user_username" />
+      </td>
+      <td>
+        <div *ngIf="username_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Lozinka:</td>
+      <td>
+        <input
+          placeholder="hello"
+          name="password"
+          type="text"
+          [(ngModel)]="reg_user_password"
+        />
+      </td>
+
+      <td>
+        <div *ngIf="password_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Re-Lozinka:</td>
+      <td>
+        <input
+          placeholder="hello"
+          name="re_password"
+          type="text"
+          [(ngModel)]="reg_user_password_repeat"
+        />
+      </td>
+
+      <td>
+        <div *ngIf="password_repeat_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Grad:</td>
+
+      <td>
+        <input
+          type="text"
+          name="city"
+
+          [(ngModel)]="reg_user_city"
+
+
+        />
+      </td>
+      <td>
+        <div *ngIf="city_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Datum rodjenja:</td>
+      <td>
+        <input
+          placeholder="format: DD/MM/YYYY"
+          type="text"
+          name="birthday"
+
+          [(ngModel)]="reg_user_birthday"
+
+        />
+      </td>
+
+
+        <td>
+          <div *ngIf="birthday_invalid" class="req_messages">Obavezno polje!</div>
+        </td>
+
+    </tr>
+
+    <tr>
+      <td>Telefon:</td>
+
+      <td>
+        <input
+          type="text"
+          name="telephone"
+
+          [(ngModel)]="reg_user_telephone"
+
+        />
+      </td>
+      <td>
+        <div *ngIf="telephone_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>I-mejl:</td>
+
+      <td>
+        <input
+          type="text"
+          name="email"
+
+          [(ngModel)]="reg_user_email"
+
+        />
+      </td>
+      <td>
+        <td>
+          <div *ngIf="email_invalid" class="req_messages">Obavezno polje!</div>
+        </td>
+    </tr>
+
+    <tr>
+      <td>Tip:</td>
+      <td>
+        <select
+          name="type"
+
+          [(ngModel)]="reg_user_type"
+
+
+        >
+          <option [ngValue]="undefined" hidden>odaberite tip korisnika</option>
+          <option value="buyer">Kupac</option>
+          <option value="seller">Oglasivac</option>
+        </select>
+      </td>
+      <td>
+        <div *ngIf="type_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr *ngIf="reg_user_type == 'seller'">
+      <td>Da li ste agent?</td>
+      <td>
+        <input
+          type="radio"
+          name="agent_or_not"
+          [(ngModel)]="reg_user_agent_or_not"
+
+          value="yes"
+        />
+        da
+        <input
+          type="radio"
+          name="agent_or_not"
+          [(ngModel)]="reg_user_agent_or_not"
+
+          value="no"
+        />
+        ne
+      </td>
+      <td>
+        <div *ngIf="agent_or_not_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr *ngIf="reg_user_type == 'seller' && reg_user_agent_or_not == 'yes'">
+      <td>Agencija:</td>
+      <td>
+        <select
+          name="myagency"
+
+          [(ngModel)]="picked_agency"
+
+        >
+          <option [ngValue]="undefined" hidden>Obavezno polje!</option>
+          <option [ngValue]="a.name" *ngFor="let a of all_agencies">
+            {{ a.city }} | {{ a.name }}
+          </option>
+        </select>
+      </td>
+      <td>
+        <div *ngIf="agency_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr *ngIf="reg_user_type == 'seller' && reg_user_agent_or_not == 'yes'">
+      <td>Broj licence:</td>
+      <td>
+        <input
+          type="text"
+          name="reg_user_licence"
+          [(ngModel)]="reg_user_licence"
+
+        />
+      </td>
+      <td>
+        <div *ngIf="licence_invalid" class="req_messages">Obavezno polje!</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="6">
+        <button (click)="register()">registruj</button>
+      </td>
+    </tr>
+    <tr>
+      <button type="reset">ponisti</button>
+    </tr>
+  </table>
+</form>

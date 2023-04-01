@@ -1,0 +1,258 @@
+<p>test works!</p>
+
+<form name="f" (ngSubmit)="f.form.valid && registruj()" #f="ngForm" novalidate>
+
+  <table>
+
+    <tr>
+      <td>Type:</td>
+      <td>
+        <select
+          name="type"
+          class="form-control"
+          [(ngModel)]="reg_user_type"
+          #type="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && type.invalid }"
+          required
+        >
+          <option [ngValue]="undefined" hidden>Choose user type</option>
+          <option value="buyer">Buyer</option>
+          <option value="seller">Seller</option>
+        </select>
+      </td>
+      <td>
+        <div *ngIf="f.submitted && type.invalid" class="req_messages">
+          <div *ngIf="type.errors.required"> Type is required! </div>
+        </div>
+      </td>
+    </tr>
+
+
+
+  <tr *ngIf="reg_user_type == 'seller'">
+    <td> Are you an agent? </td>
+    <td>
+      <input
+        type="radio"
+        name="agent_or_not"
+        [(ngModel)]="reg_user_agent_or_not"
+        #agent_or_not="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && agent_or_not.invalid}"
+        required
+        value="yes"
+      />
+      yes
+      <input
+      type="radio"
+      name="agent_or_not"
+      [(ngModel)]="reg_user_agent_or_not"
+      #agent_or_not="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && agent_or_not.invalid}"
+      required
+      value="no"
+      />
+      no
+    </td>
+    <td>
+      <div *ngIf="f.submitted && agent_or_not.invalid" class="req_messages">
+        <div *ngIf="agent_or_not.errors.required"> This field is required! </div>
+      </div>
+    </td>
+  </tr>
+
+ <tr *ngIf="reg_user_type == 'seller' && reg_user_agent_or_not == 'yes'">
+    <td>Agency:</td>
+    <td>
+      <select
+        name="myagency"
+        class="form-control"
+        [(ngModel)]="picked_agency"
+        #myagency="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && myagency.invalid }"
+        required
+      >
+        <option [ngValue]="undefined" hidden> This field is required! </option>
+        <option [ngValue]="a.name" *ngFor = 'let a of all_agencies'>
+          {{a.city}} |	{{a.name}}
+        </option>
+      </select>
+    </td>
+    <td>
+      <div *ngIf="f.submitted && myagency.invalid" class="req_messages">
+        <div *ngIf="myagency.errors.required"> Agency is required! </div>
+      </div>
+    </td>
+  </tr>
+
+
+
+
+
+  <tr *ngIf="reg_user_type == 'seller' && reg_user_agent_or_not == 'yes'">
+    <td> Licence:</td>
+    <td>
+      <input
+        type="text"
+        name="reg_user_licence"
+        [(ngModel)]="reg_user_licence"
+        #user_licence="ngModel"
+  [ngClass]="{ 'is-invalid': f.submitted && user_licence.invalid }"
+   required
+      />
+    </td>
+    <td>
+      <div *ngIf="f.submitted && user_licence.invalid" class="req_messages">
+        <div *ngIf="user_licence.errors.required"> This field is required! </div>
+      </div>
+    </td>
+  </tr>
+
+
+
+</table>
+
+
+<button> Registruj </button>
+<button type="reset"> Reset </button>
+
+</form>
+
+<br>
+
+Provera:
+<br>
+{{reg_user_type}}<br>
+{{reg_user_agent_or_not}}<br>
+{{picked_agency}}<br>
+{{reg_user_licence}}
+
+
+
+<br>
+Prikaz svih agencija tabelarno:
+
+<table>
+  <tr>
+    <th>
+      Id
+    </th>
+    <th>
+      Naziv
+    </th>
+    <th>
+      Adresa
+    </th>
+    <th>
+      Grad
+    </th>
+    <th>
+      Telefon
+    </th>
+    <th>
+      PIB
+    </th>
+
+  </tr>
+  <tr *ngFor="let a of all_agencies">
+    <td> {{a.id}}</td>
+    <td>{{a.name}}</td>
+    <td>{{a.address}}</td>
+    <td>{{a.city}}</td>
+    <td>{{a.telephone}}</td>
+    <td>{{a.PIB}}</td>
+  </tr>
+
+</table>
+
+<br>
+
+
+dodavanje mikrolokacije za vec postojece gradove i opstine:
+<form name="fmicro" (ngSubmit)="fmicro.form.valid && add_location()" #fmicro="ngForm" novalidate>
+<table>
+<tr>
+  <td>
+    City/Municipality:
+  </td>
+    <td>
+      <select
+        name="cityandmunicipality"
+        class="form-control"
+        [(ngModel)]="picked_cityandmunicipality"
+        #cityandmunicipality="ngModel"
+        [ngClass]="{ 'is-invalid': fmicro.submitted && cityandmunicipality.invalid }"
+      required
+      >
+        <option [ngValue]="undefined" hidden> This field is required! </option>
+        <option [ngValue]="m" *ngFor = 'let m of all_municipalities' >
+          {{m.city}} |	{{m.name}}
+        </option>
+      </select>
+    </td>
+    <td>
+      <div *ngIf="fmicro.submitted && cityandmunicipality.invalid" class="req_messages">
+        <div *ngIf="cityandmunicipality.errors.required"> This field is required! </div>
+      </div>
+    </td>
+</tr>
+
+<tr>
+  <td> Microlocation: </td>
+  <td>
+    <input
+      type="text"
+      name="fmicrolocation"
+      [(ngModel)]="my_microlocation"
+      #fmicrolocation="ngModel"
+      [ngClass]="{ 'is-invalid': fmicro.submitted && fmicrolocation.invalid }"
+       required
+    />
+  </td>
+  <td>
+    <div *ngIf="fmicro.submitted && fmicrolocation.invalid" class="req_messages">
+      <div *ngIf="fmicrolocation.errors.required"> This field is required! </div>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td> Street: </td>
+  <td>
+    <input
+      type="text"
+      name="fstreet"
+      [(ngModel)]="my_street"
+      #fstreet="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && fstreet.invalid }"
+       required
+    />
+  </td>
+  <td>
+    <div *ngIf="fmicro.submitted && fstreet.invalid" class="req_messages">
+      <div *ngIf="fstreet.errors.required"> This field is required! </div>
+    </div>
+  </td>
+</tr>
+
+
+</table>
+
+<button> add </button>
+<button type="reset"> Reset </button>
+
+</form>
+
+{{my_city}} <br>
+{{my_municipality}}<br>
+{{my_microlocation}}<br>
+{{my_street}}<br>
+
+{{add_location_message}}
+
+<br>
+
+
+
+
+
+<app-register></app-register>

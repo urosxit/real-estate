@@ -1,0 +1,179 @@
+<p>login works!</p>
+
+
+
+
+<form >
+
+  <table>
+          <tr>
+                <td>
+                  Username:
+                </td>
+                <td>
+                  <input type="text" name = "username "[(ngModel)]='username' >
+                </td>
+          </tr>
+          <tr>
+                <td>
+                  Password:
+                </td>
+                <td>
+                  <input type="text" name = "password" [(ngModel)]='password'>
+                </td>
+          </tr>
+
+          <tr>
+            <td>
+             Type:
+           </td>
+           <td>
+             <select name='type' [(ngModel)] ='type'>
+                <option value="admin">admin</option>
+                <option value="delegate">delegate</option>
+                <option value="leader">leader</option>
+                </select>
+           </td>
+     </tr>
+
+          <tr>
+            <td colspan='2'>
+            <button (click) ='login()'>Sign In</button>
+          </td>
+          </tr>
+ </table>
+ <div *ngIf = 'loginMessage' class = 'err'>
+   {{loginMessage}}
+ </div>
+</form>
+<br>
+
+
+<h2>PASSWORD CHANGE</h2>
+<form>
+  <table>
+    <tr>
+      <td>
+        username:
+      </td>
+      <td>
+        <input type="text"  name = "pass_change_username" [(ngModel)]='pass_change_username' validators.required>
+      </td>
+
+          </tr>
+    <tr>
+      <td>
+        old password:
+      </td>
+      <td>
+        <input type="text" name="pass_change_old_pass" [(ngModel)]='pass_change_old_pass'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        new password:
+      </td>
+      <td>
+        <input type="text" name="pass_change_new_pass" [(ngModel)]='pass_change_new_pass'>
+      </td>
+    </tr>
+    <tr>
+      <td col = '2'>
+        <button (click) = 'change_pass()'> change password </button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<div *ngIf = 'passChangeMessage' class = 'err'>
+  {{passChangeMessage}}
+</div>
+
+<h2>REGISTRATION</h2>
+<form>
+  <table>
+    <tr>
+      <td>
+        username:
+      </td>
+      <td>
+        <input type="text" name = "reg_username" [(ngModel)]='reg_username'>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        password:
+      </td>
+      <td>
+        <input type="text" name="reg_password" [(ngModel)]='reg_password'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        confirm password:
+      </td>
+      <td>
+        <input type="text" name="reg_password_repeat" [(ngModel)]='reg_password_repeat'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Firstname:
+      </td>
+      <td>
+        <input type="text" name="reg_firstname" [(ngModel)]='reg_firstname'>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Lastname:
+      </td>
+      <td>
+        <input type="text" name="reg_lastname" [(ngModel)]='reg_lastname'>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Country:
+      </td>
+      <td>
+        <input type="text" name="reg_country" [(ngModel)]='reg_country'>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Email:
+      </td>
+      <td>
+        <input type="text" name="reg_email" [(ngModel)]='reg_email'>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+       Type:
+     </td>
+     <td>
+       <select name='reg_type' [(ngModel)] ='reg_type'>
+          <option value="delegate">delegate</option>
+          <option value="leader">leader</option>
+          </select>
+     </td>
+</tr>
+
+
+    <tr>
+      <td col = '2'>
+        <button (click) = 'register()'> register </button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<div *ngIf = 'reg_message' class = 'err'>
+  {{reg_message}}
+</div>
+

@@ -1,0 +1,344 @@
+
+<h3>
+  Registracija korisnika
+</h3>
+
+
+<form
+name="form"
+(ngSubmit)="f.form.valid && register()"
+#f="ngForm"
+novalidate
+>
+<table>
+  <tr>
+    <td>Ime:</td>
+
+    <td>
+      <input
+        type="text"
+        name="firstname"
+        class="form-control"
+        [(ngModel)]="reg_user_firstname"
+        #firstname="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && firstname.invalid }"
+        required
+      />
+    </td>
+    <td>
+      <div *ngIf="f.submitted && firstname.invalid" class="req_messages">
+        <div *ngIf="firstname.errors.required">Obavezno polje!</div>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Prezime:</td>
+
+    <td>
+      <input
+        type="text"
+        name="lastname"
+        class="form-control"
+        [(ngModel)]="reg_user_lastname"
+        #lastname="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && lastname.invalid }"
+        required
+      />
+    </td>
+    <td>
+      <div *ngIf="f.submitted && lastname.invalid" class="req_messages">
+        <div *ngIf="lastname.errors.required">Obavezno polje! </div>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Korisnicko ime:</td>
+
+    <td>
+      <input
+        type="text"
+        name="username"
+        class="form-control"
+        [(ngModel)]="reg_user_username"
+        #username="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && username.invalid }"
+        required
+      />
+    </td>
+    <td>
+      <div *ngIf="f.submitted && username.invalid" class="req_messages">
+        <div *ngIf="username.errors.required">Obavezno polje!</div>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Lozinka:</td>
+    <td>
+      <input
+        placeholder="hello"
+        type="password"
+        name="password"
+        class="form-control"
+        [(ngModel)]="reg_user_password"
+        #password="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+        required
+        minlength="6"
+      />
+    </td>
+
+    <td>
+      <div *ngIf="f.submitted && password.invalid" class="req_messages">
+        <div *ngIf="password.errors.required">Obavezno polje!</div>
+        <div *ngIf="password.errors.minlength">
+          Password must be at least 6 characters
+        </div>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Re-Lozinka:</td>
+    <td>
+      <input
+        placeholder="hello"
+        type="password"
+        name="password_repeat"
+        class="form-control"
+        [(ngModel)]="reg_user_password_repeat"
+        #password_repeat="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && password_repeat.invalid }"
+        required
+        minlength="6"
+      />
+    </td>
+
+    <td>
+      <div
+        *ngIf="f.submitted && password_repeat.invalid"
+        class="req_messages"
+      >
+        <div *ngIf="password_repeat.errors.required">
+          Obavezno polje!
+        </div>
+        <div *ngIf="password_repeat.errors.minlength">
+          Password must be at least 6 characters
+        </div>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Grad:</td>
+
+    <td>
+      <input
+        type="text"
+        name="city"
+        class="form-control"
+        [(ngModel)]="reg_user_city"
+        #city="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && city.invalid }"
+        required
+      />
+    </td>
+    <td>
+      <div *ngIf="f.submitted && city.invalid" class="req_messages">
+        <div *ngIf="city.errors.required">Obavezno polje!</div>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Datum rodjenja:</td>
+    <td>
+      <input
+        placeholder="format: DD/MM/YYYY"
+        type="text"
+        name="birthday"
+        class="form-control"
+        [(ngModel)]="reg_user_birthday"
+        #birthday="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && birthday.invalid }"
+        required
+      />
+    </td>
+
+    <td>
+      <div *ngIf="f.submitted && birthday.invalid" class="req_messages">
+        <div *ngIf="birthday.errors.required">Obavezno polje! </div>
+
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Telefon:</td>
+
+    <td>
+      <input
+        type="text"
+        name="telephone"
+        class="form-control"
+        [(ngModel)]="reg_user_telephone"
+        #telephone="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && telephone.invalid }"
+        required
+      />
+    </td>
+    <td>
+      <div *ngIf="f.submitted && telephone.invalid" class="req_messages">
+        <div *ngIf="telephone.errors.required">Obavezno polje! </div>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>I-mejl:</td>
+
+    <td>
+      <input
+        type="text"
+        name="email"
+        class="form-control"
+        [(ngModel)]="reg_user_email"
+        #email="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+        required
+      />
+    </td>
+    <td>
+      <div *ngIf="f.submitted && email.invalid" class="req_messages">
+        <div *ngIf="email.errors.required"> Obavezno polje! </div>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Tip:</td>
+    <td>
+      <select
+        name="type"
+        class="form-control"
+        [(ngModel)]="reg_user_type"
+        #type="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && type.invalid }"
+        required
+      >
+        <option [ngValue]="undefined" hidden>odaberite tip korisnika</option>
+        <option value="buyer">Kupac</option>
+        <option value="seller">Oglasivac</option>
+      </select>
+    </td>
+    <td>
+      <div *ngIf="f.submitted && type.invalid" class="req_messages">
+        <div *ngIf="type.errors.required"> Obavezno polje!  </div>
+      </div>
+    </td>
+  </tr>
+
+
+
+<tr *ngIf="reg_user_type == 'seller'">
+  <td> Da li ste agent? </td>
+  <td>
+    <input
+      type="radio"
+      name="agent_or_not"
+      [(ngModel)]="reg_user_agent_or_not"
+      #agent_or_not="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && agent_or_not.invalid}"
+      required
+      value="yes"
+    />
+    da
+    <input
+    type="radio"
+    name="agent_or_not"
+    [(ngModel)]="reg_user_agent_or_not"
+    #agent_or_not="ngModel"
+    [ngClass]="{ 'is-invalid': f.submitted && agent_or_not.invalid}"
+    required
+    value="no"
+    />
+    ne
+  </td>
+  <td>
+    <div *ngIf="f.submitted && agent_or_not.invalid" class="req_messages">
+      <div *ngIf="agent_or_not.errors.required"> Obavezno polje!  </div>
+    </div>
+  </td>
+</tr>
+
+<tr *ngIf="reg_user_type == 'seller' && reg_user_agent_or_not == 'yes'">
+  <td>Agencija:</td>
+  <td>
+    <select
+      name="myagency"
+      class="form-control"
+      [(ngModel)]="picked_agency"
+      #myagency="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && myagency.invalid }"
+      required
+    >
+      <option [ngValue]="undefined" hidden> Obavezno polje! </option>
+      <option [ngValue]="a.name" *ngFor = 'let a of all_agencies'>
+        {{a.city}} |	{{a.name}}
+      </option>
+    </select>
+  </td>
+  <td>
+    <div *ngIf="f.submitted && myagency.invalid" class="req_messages">
+      <div *ngIf="myagency.errors.required"> Obavezno polje! </div>
+    </div>
+  </td>
+</tr>
+
+
+
+
+
+<tr *ngIf="reg_user_type == 'seller' && reg_user_agent_or_not == 'yes'">
+  <td> Broj licence:</td>
+  <td>
+    <input
+      type="text"
+      name="reg_user_licence"
+      [(ngModel)]="reg_user_licence"
+      #user_licence="ngModel"
+[ngClass]="{ 'is-invalid': f.submitted && user_licence.invalid }"
+ required
+ minlength="8"
+ maxlength="9"
+    />
+  </td>
+  <td>
+    <div *ngIf="f.submitted && user_licence.invalid" class="req_messages">
+      <div *ngIf="user_licence.errors.required"> Obavezno polje!  </div>
+      <div *ngIf="user_licence.errors.minlength">
+        Broj licence mora imati 8 ili 9 cifara
+      </div>
+      <div *ngIf="user_licence.errors.maxlength">
+        Broj licence mora imati 8 ili 9 cifara
+      </div>
+    </div>
+
+  </td>
+</tr>
+
+
+
+  <tr>
+    <td colspan="3">
+      <button>registruj</button>
+    </td>
+
+  </tr>
+  <tr>
+    <button type="reset">ponisti</button>
+  </tr>
+</table>
+</form>

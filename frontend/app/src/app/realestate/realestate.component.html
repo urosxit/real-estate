@@ -1,0 +1,713 @@
+<p>realestate works!</p>
+
+<h2>Unos nekretnine!</h2>
+
+<br />
+
+<form
+  name="form_realestate"
+  (ngSubmit)="frealestate.form.valid && register()"
+  #frealestate="ngForm"
+  novalidate
+>
+  <table>
+    <tr>
+      <td>Naziv:</td>
+
+      <td>
+        <input
+          type="text"
+          name="naziv"
+          class="form-control"
+          [(ngModel)]="reg_estate_naziv"
+          #naziv="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted && naziv.invalid }"
+          required
+        />
+      </td>
+      <td>
+        <div *ngIf="frealestate.submitted && naziv.invalid" class="req_messages">
+          <div *ngIf="naziv.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Lokacija:</td>
+
+      <td>
+        <input
+          type="text"
+          name="lokacija"
+          class="form-control"
+          [(ngModel)]="reg_estate_lokacija"
+          #lokacija="ngModel"
+          [ngClass]="{
+            'is-invalid': frealestate.submitted && lokacija.invalid
+          }"
+          required
+        />
+      </td>
+      <td>
+        <div
+          *ngIf="frealestate.submitted && lokacija.invalid"
+          class="req_messages"
+        >
+          <div *ngIf="lokacija.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Tip:</td>
+      <td>
+        <select
+          name="tip"
+          class="form-control"
+          [(ngModel)]="reg_estate_tip"
+          #tip="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted && tip.invalid }"
+          required
+        >
+          <option [ngValue]="undefined" hidden>Odaberite!</option>
+          <option value="stan">stan</option>
+          <option value="kuca">kuca</option>
+          <option value="vikendica">vikendica</option>
+          <option value="lokal">lokal</option>
+          <option value="magacin">magacin</option>
+        </select>
+      </td>
+      <td>
+        <div *ngIf="frealestate.submitted && tip.invalid" class="req_messages">
+          <div *ngIf="tip.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr *ngIf="reg_estate_tip == 'stan'">
+      <td>Sprat:</td>
+      <td>
+        <input
+          type="text"
+          name="sprat"
+          class="form-control"
+          [(ngModel)]="reg_sprat"
+          #sprat="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted && sprat.invalid }"
+          required
+        />
+      </td>
+      <td>
+        <div
+          *ngIf="frealestate.submitted && sprat.invalid"
+          class="req_messages"
+        >
+          <div *ngIf="sprat.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Ukupna spratnost:</td>
+      <td>
+        <input
+          type="text"
+          name="spratnost"
+          class="form-control"
+          [(ngModel)]="reg_ukupna_spratnost"
+          #spratnost="ngModel"
+          [ngClass]="{
+            'is-invalid': frealestate.submitted && spratnost.invalid
+          }"
+          required
+        />
+      </td>
+      <td>
+        <div
+          *ngIf="frealestate.submitted && spratnost.invalid"
+          class="req_messages"
+        >
+          <div *ngIf="spratnost.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Cena:</td>
+
+      <td>
+        <input
+          type="text"
+          name="cena"
+          class="form-control"
+          [(ngModel)]="reg_estete_cena"
+          #cena="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted && cena.invalid }"
+          required
+        />
+      </td>
+      <td>
+        <div *ngIf="frealestate.submitted && cena.invalid" class="req_messages">
+          <div *ngIf="cena.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Kvadratura:</td>
+
+      <td>
+        <input
+          type="text"
+          name="kvadratura"
+          class="form-control"
+          [(ngModel)]="reg_estate_kvadratura"
+          #kvadratura="ngModel"
+          [ngClass]="{
+            'is-invalid': frealestate.submitted && kvadratura.invalid
+          }"
+          required
+        />
+      </td>
+      <td>
+        <div
+          *ngIf="frealestate.submitted && kvadratura.invalid"
+          class="req_messages"
+        >
+          <div *ngIf="kvadratura.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Broj soba:</td>
+      <td>
+        <select
+          name="sobe"
+          class="form-control"
+          [(ngModel)]="reg_estate_sobe"
+          #sobe="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted && sobe.invalid }"
+          required
+        >
+          <option [ngValue]="undefined" hidden>Odaberite!</option>
+          <option value="1">1</option>
+          <option value="1.5">1.5</option>
+          <option value="2">2</option>
+          <option value="2.5">2.5</option>
+          <option value="3">3</option>
+          <option value="3.5">3.5</option>
+          <option value="4">4</option>
+          <option value="4.5">4.5</option>
+          <option value="5">5</option>
+          <option value="5+">5+</option>
+        </select>
+      </td>
+      <td>
+        <div *ngIf="frealestate.submitted && sobe.invalid" class="req_messages">
+          <div *ngIf="sobe.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Godina izgradnje:</td>
+      <td>
+        <input
+          placeholder="format: YYYY."
+          type="text"
+          name="godina_izgradnje"
+          class="form-control"
+          [(ngModel)]="reg_estate_godina_izgradnje"
+          #godina_izgradnje="ngModel"
+          [ngClass]="{
+            'is-invalid': frealestate.submitted && godina_izgradnje.invalid
+          }"
+          required
+        />
+      </td>
+
+      <td>
+        <div
+          *ngIf="frealestate.submitted && godina_izgradnje.invalid"
+          class="req_messages"
+        >
+          <div *ngIf="godina_izgradnje.errors.required">
+            This field is required
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Oglasivac:</td>
+
+      <td>Uzmi ulogovanog - Agencija ili vlasnik</td>
+    </tr>
+
+    <tr>
+      <td>Stanje:</td>
+      <td>
+        <select
+          name="stanje"
+          class="form-control"
+          [(ngModel)]="reg_estate_stanje"
+          #stanje="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted && stanje.invalid }"
+          required
+        >
+          <option [ngValue]="undefined" hidden>Odaberite!</option>
+          <option value="izvorno">izvorno</option>
+          <option value="renovirano">renovirano</option>
+          <option value="LUX">LUX</option>
+        </select>
+      </td>
+      <td>
+        <div
+          *ngIf="frealestate.submitted && stanje.invalid"
+          class="req_messages"
+        >
+          <div *ngIf="stanje.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Tip grejanja:</td>
+      <td>
+        <select
+          name="grejanje"
+          class="form-control"
+          [(ngModel)]="reg_estate_tip_grejanja"
+          #grejanje="ngModel"
+          [ngClass]="{
+            'is-invalid': frealestate.submitted && grejanje.invalid
+          }"
+          required
+        >
+          <option [ngValue]="undefined" hidden>Odaberite!</option>
+          <option value="CG">CG</option>
+          <option value="EG">EG</option>
+          <option value="TA">TA</option>
+          <option value="TAS">TAS</option>
+          <option value="podno">podno</option>
+          <option value="toplotne_pumpe">toplotne pumpe</option>
+        </select>
+      </td>
+      <td>
+        <div
+          *ngIf="frealestate.submitted && grejanje.invalid"
+          class="req_messages"
+        >
+          <div *ngIf="grejanje.errors.required">This field is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Mesecne rezije:</td>
+      <td>
+        <input
+          type="text"
+          name="rezije"
+          class="form-control"
+          [(ngModel)]="reg_estate_mesecne_resije"
+          #rezije="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted && rezije.invalid }"
+          required
+        />
+      </td>
+
+      <td>
+        <div
+          *ngIf="frealestate.submitted && rezije.invalid"
+          class="req_messages"
+        >
+          <div *ngIf="rezije.errors.required">This field is required</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Karakteristike:
+      </td>
+      <td>
+        <table>
+
+            <tr>
+            <td>
+              <input
+                type="checkbox"
+                name="terasa"
+                [(ngModel)]="reg_estate_terasa"
+                #terasa="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+            <td>Terasa</td>
+            <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+
+            <td>
+              <input
+                type="checkbox"
+                name="podrum"
+                [(ngModel)]="reg_estate_podrum"
+                #podrum="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+
+            <td>Podrum</td>
+            <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+
+            <td>
+              <input
+                type="checkbox"
+                name="internet"
+                [(ngModel)]="reg_estate_internet"
+                 #internet="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+            <td>Internet</td>
+            <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="checkbox"
+                name="lodja"
+                [(ngModel)]="reg_estate_lodja"
+                  #lodja="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+            <td>Lodja</td>
+            <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+
+            <td>
+              <input
+                type="checkbox"
+                name="garaza"
+                [(ngModel)]="reg_estate_garaza"
+                 #garaza="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+            <td>Garaza</td>
+            <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+
+            <td>
+              <input
+                type="checkbox"
+                name="interfon"
+                [(ngModel)]="reg_estate_interfon"
+                 #interfon="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+            <td>Interfon</td>
+            <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="checkbox"
+                name="franc_balkon"
+                [(ngModel)]="reg_estate_franc_balkon"
+                 #franc_balkon="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+            <td>Franc.balkon</td>
+            <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+
+            <td>
+              <input
+                type="checkbox"
+                name="sa_bastom"
+                [(ngModel)]="reg_estate_sa_bastom"
+                 #sa_bastom="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+
+            <td>Sa bastom</td>
+             <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+
+            <td>
+              <input
+                type="checkbox"
+                name="telefon"
+                [(ngModel)]="reg_estate_telefon"
+                 #telefon="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+            <td>
+              Telefon
+            </td>
+             <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="checkbox"
+                name="lift"
+                [(ngModel)]="reg_estate_lift"
+                 #lift="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+            <td>
+              Lift
+            </td>
+             <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+            <td>
+              <input
+                type="checkbox"
+                name="klima"
+                [(ngModel)]="reg_estate_klima"
+                 #klima="ngModel"
+                  [ngClass]="{ 'is-invalid': frealestate.submitted }"
+              />
+            </td>
+            <td>
+              Klima
+            </td>
+             <td>
+            <div *ngIf="frealestate.submitted"></div>
+           </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+          </tr>
+        </table>
+
+
+
+      </td>
+
+
+
+
+
+
+
+
+
+    <tr>
+      <button>registruj</button>
+    </tr>
+    <tr>
+      <button type="reset">ponisti</button>
+    </tr>
+  </table>
+</form>
+
+
+<!--
+<table>
+  <tr>
+    <td>
+      <input
+        type="checkbox"
+        name="terasa"
+        [(ngModel)]="reg_estate_karakteristike.terasa"
+        #terasa="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+    <td>Terasa</td>
+    <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+
+    <td>
+      <input
+        type="checkbox"
+        name="podrum"
+        [(ngModel)]="reg_estate_podrum"
+        #podrum="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+
+    <td>Podrum</td>
+    <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+
+    <td>
+      <input
+        type="checkbox"
+        name="internet"
+        [(ngModel)]="reg_estate_internet"
+         #internet="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+    <td>Internet</td>
+    <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+  </tr>
+  <tr>
+    <td>
+      <input
+        type="checkbox"
+        name="lodja"
+        [(ngModel)]="reg_estate_lodja"
+          #lodja="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+    <td>Lodja</td>
+    <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+
+    <td>
+      <input
+        type="checkbox"
+        name="garaza"
+        [(ngModel)]="reg_estate_karakteristike_garaza"
+         #garaza="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+    <td>Garaza</td>
+    <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+
+    <td>
+      <input
+        type="checkbox"
+        name="interfon"
+        [(ngModel)]="reg_estate_karakteristike_interfon"
+         #interfon="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+    <td>Interfon</td>
+    <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+  </tr>
+  <tr>
+    <td>
+      <input
+        type="checkbox"
+        name="franc_balkon"
+        [(ngModel)]="reg_estate_franc_balkon"
+         #franc_balkon="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+    <td>Franc.balkon</td>
+    <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+
+    <td>
+      <input
+        type="checkbox"
+        name="sa_bastom"
+        [(ngModel)]="reg_estate_sa_bastom"
+         #sa_bastom="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+
+    <td>Sa bastom</td>
+     <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+
+    <td>
+      <input
+        type="checkbox"
+        name="telefon"
+        [(ngModel)]="reg_estate_telefon"
+         #telefon="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+    <td>
+      Telefon
+    </td>
+     <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+  </tr>
+  <tr>
+    <td>
+      <input
+        type="checkbox"
+        name="lift"
+        [(ngModel)]="reg_estate_lift"
+         #lift="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+    <td>
+      Lift
+    </td>
+     <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+    <td>
+      <input
+        type="checkbox"
+        name="klima"
+        [(ngModel)]="reg_estate_klima"
+         #klima="ngModel"
+          [ngClass]="{ 'is-invalid': frealestate.submitted }"
+      />
+    </td>
+    <td>
+      Klima
+    </td>
+     <td>
+    <div *ngIf="frealestate.submitted"></div>
+   </td>
+    <td>
+
+    </td>
+    <td>
+
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
+-->

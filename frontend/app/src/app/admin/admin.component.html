@@ -1,0 +1,430 @@
+<p>admin works!</p>
+
+unos novog korisnika
+<br />
+--------------------------------------------
+<br />
+
+<form
+  name="form"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
+  <table>
+    <tr>
+      <td>Firstname:</td>
+
+      <td>
+        <input
+          type="text"
+          name="firstname"
+          class="form-control"
+          [(ngModel)]="reg_user_firstname"
+          #firstname="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && firstname.invalid }"
+          required
+        />
+      </td>
+      <td>
+        <div *ngIf="f.submitted && firstname.invalid" class="req_messages">
+          <div *ngIf="firstname.errors.required">Firstname is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Lastname:</td>
+
+      <td>
+        <input
+          type="text"
+          name="lastname"
+          class="form-control"
+          [(ngModel)]="reg_user_lastname"
+          #lastname="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && lastname.invalid }"
+          required
+        />
+      </td>
+      <td>
+        <div *ngIf="f.submitted && lastname.invalid" class="req_messages">
+          <div *ngIf="lastname.errors.required">Lastname is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Username:</td>
+
+      <td>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          [(ngModel)]="reg_user_username"
+          #username="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && username.invalid }"
+          required
+        />
+      </td>
+      <td>
+        <div *ngIf="f.submitted && username.invalid" class="req_messages">
+          <div *ngIf="username.errors.required">Username is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Password:</td>
+      <td>
+        <input
+          placeholder="hello"
+          type="password"
+          name="password"
+          class="form-control"
+          [(ngModel)]="reg_user_password"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+          required
+          minlength="6"
+        />
+      </td>
+
+      <td>
+        <div *ngIf="f.submitted && password.invalid" class="req_messages">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Repeat Password:</td>
+      <td>
+        <input
+          placeholder="hello"
+          type="password"
+          name="password_repeat"
+          class="form-control"
+          [(ngModel)]="reg_user_password_repeat"
+          #password_repeat="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password_repeat.invalid }"
+          required
+          minlength="6"
+        />
+      </td>
+
+      <td>
+        <div
+          *ngIf="f.submitted && password_repeat.invalid"
+          class="req_messages"
+        >
+          <div *ngIf="password_repeat.errors.required">
+            Password repeat is required!
+          </div>
+          <div *ngIf="password_repeat.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>City:</td>
+
+      <td>
+        <input
+          type="text"
+          name="city"
+          class="form-control"
+          [(ngModel)]="reg_user_city"
+          #city="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && city.invalid }"
+          required
+        />
+      </td>
+      <td>
+        <div *ngIf="f.submitted && city.invalid" class="req_messages">
+          <div *ngIf="city.errors.required">City is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Birthday:</td>
+      <td>
+        <input
+          placeholder="format: DD/MM/YYYY"
+          type="text"
+          name="birthday"
+          class="form-control"
+          [(ngModel)]="reg_user_birthday"
+          #birthday="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && birthday.invalid }"
+          required
+        />
+      </td>
+
+      <td>
+        <div *ngIf="f.submitted && birthday.invalid" class="req_messages">
+          <div *ngIf="birthday.errors.required">Birthday is required!</div>
+          <div *ngIf="birthday.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Telephone:</td>
+
+      <td>
+        <input
+          type="text"
+          name="telephone"
+          class="form-control"
+          [(ngModel)]="reg_user_telephone"
+          #telephone="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && telephone.invalid }"
+          required
+        />
+      </td>
+      <td>
+        <div *ngIf="f.submitted && telephone.invalid" class="req_messages">
+          <div *ngIf="telephone.errors.required">Telephone is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>E-mail:</td>
+
+      <td>
+        <input
+          type="text"
+          name="email"
+          class="form-control"
+          [(ngModel)]="reg_user_email"
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+          required
+        />
+      </td>
+      <td>
+        <div *ngIf="f.submitted && email.invalid" class="req_messages">
+          <div *ngIf="email.errors.required">E-mail is required!</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Type:</td>
+      <td>
+        <select
+          name="type"
+          class="form-control"
+          [(ngModel)]="reg_user_type"
+          #type="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && type.invalid }"
+          required
+        >
+          <option [ngValue]="undefined" hidden>Choose user type</option>
+          <option value="buyer">Buyer</option>
+          <option value="seller">Seller</option>
+        </select>
+      </td>
+      <td>
+        <div *ngIf="f.submitted && type.invalid" class="req_messages">
+          <div *ngIf="type.errors.required"> Type is required! </div>
+        </div>
+      </td>
+    </tr>
+
+
+
+  <tr *ngIf="reg_user_type == 'seller'">
+    <td> Are you an agent? </td>
+    <td>
+      <input
+        type="radio"
+        name="agent_or_not"
+        [(ngModel)]="reg_user_agent_or_not"
+        #agent_or_not="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && agent_or_not.invalid}"
+        required
+        value="yes"
+      />
+      yes
+      <input
+      type="radio"
+      name="agent_or_not"
+      [(ngModel)]="reg_user_agent_or_not"
+      #agent_or_not="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && agent_or_not.invalid}"
+      required
+      value="no"
+      />
+      no
+    </td>
+    <td>
+      <div *ngIf="f.submitted && agent_or_not.invalid" class="req_messages">
+        <div *ngIf="agent_or_not.errors.required"> This field is required! </div>
+      </div>
+    </td>
+  </tr>
+
+ <tr *ngIf="reg_user_type == 'seller' && reg_user_agent_or_not == 'yes'">
+    <td>Agency:</td>
+    <td>
+      <select
+        name="myagency"
+        class="form-control"
+        [(ngModel)]="picked_agency"
+        #myagency="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && myagency.invalid }"
+        required
+      >
+        <option [ngValue]="undefined" hidden> This field is required! </option>
+        <option [ngValue]="a.name" *ngFor = 'let a of all_agencies'>
+          {{a.city}} |	{{a.name}}
+        </option>
+      </select>
+    </td>
+    <td>
+      <div *ngIf="f.submitted && myagency.invalid" class="req_messages">
+        <div *ngIf="myagency.errors.required"> Agency is required! </div>
+      </div>
+    </td>
+  </tr>
+
+
+
+
+
+  <tr *ngIf="reg_user_type == 'seller' && reg_user_agent_or_not == 'yes'">
+    <td> Licence:</td>
+    <td>
+      <input
+        type="text"
+        name="reg_user_licence"
+        [(ngModel)]="reg_user_licence"
+        #user_licence="ngModel"
+  [ngClass]="{ 'is-invalid': f.submitted && user_licence.invalid }"
+   required
+      />
+    </td>
+    <td>
+      <div *ngIf="f.submitted && user_licence.invalid" class="req_messages">
+        <div *ngIf="user_licence.errors.required"> This field is required! </div>
+      </div>
+    </td>
+  </tr>
+
+
+
+    <tr>
+      <button>registruj</button>
+    </tr>
+    <tr>
+      <button type="reset">ponisti</button>
+    </tr>
+  </table>
+</form>
+
+---------------------------------------------
+<br />
+dodaj agenciju:
+<td>
+  <input
+    type="checkbox"
+    name="checkbox_za_agencija_formu"
+    [(ngModel)]="flag_show_reg_agency_form"
+  />
+</td>
+
+<div *ngIf="flag_show_reg_agency_form">
+  <h4>Unos nove agencije</h4>
+  <form>
+    <table>
+      <tr>
+        <td>ime agencije:</td>
+        <td>
+          <input
+            type="text"
+            name="reg_agency_name"
+            [(ngModel)]="reg_agency_name"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>adresa:</td>
+        <td>
+          <input
+            type="text"
+            name="reg_agency_adress"
+            [(ngModel)]="reg_agency_address"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>grad:</td>
+        <td>
+          <input
+            type="text"
+            name="reg_agency_city"
+            [(ngModel)]="reg_agency_city"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>telefon:</td>
+        <td>
+          <input
+            type="text"
+            name="reg_agency_phone_number"
+            [(ngModel)]="reg_agency_phone_number"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>pib:</td>
+        <td>
+          <input
+            type="text"
+            name="reg_agency_PIB"
+            [(ngModel)]="reg_agency_PIB"
+          />
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <button (click)="register_agency()">dodaj agenciju</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+{{ reg_agency_name }} <br />
+{{ reg_agency_address }} <br />
+{{ reg_agency_city }} <br />
+{{ reg_agency_phone_number }} <br />
+{{ reg_agency_PIB }} <br />
+
+<span style="color: red"> {{ reg_agency_message }}</span>
+
+test
+<div *ngIf="flag_show_reg_agency_form">
+  Test pretrage
+  <form>
+    test_ime: <input type="text" name="test_ime" [(ngModel)]="test_ime" />
+    <br />
+    test_grad:<input type="text" name="test_grad" [(ngModel)]="test_grad" />
+    <br />
+    test_pib<input type="text" name="test_pib" [(ngModel)]="test_pib" /> <br />
+    <button (click)="register_agency()">registruj agenciju</button>
+  </form>
+</div>
