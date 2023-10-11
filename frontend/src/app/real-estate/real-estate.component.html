@@ -1,0 +1,165 @@
+<div class="col col-lg-12 col-md-12 col-sm-12 real-estate">
+  <div class="row">
+    <div class="col-lg-6 col-md-12 col-sm-12 real-estate-name">
+      <h2>{{realEstateModel.realEstate.name}}</h2>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 real-estate-location">
+      <h3>
+        {{realEstateModel.locationName}}/{{realEstateModel.microlocationName}}/{{realEstateModel.realEstate.address}}
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div class="col col-lg-12 col-md-12 col-sm-12 main-content">
+  <div class="col col-lg-6 col-md-12 col-sm-12" style="margin-top: 10px;">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="http://localhost:4000/{{realEstateModel.firstImage}}" alt="First slide">
+            </div>
+            <div class="carousel-item" *ngFor="let imgSrc of realEstateModel.images">
+              <img class="d-block w-100" src="http://localhost:4000/{{imgSrc}}" alt="First slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Prethodna</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Sledeća</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h3 class="price"
+          [ngClass]="realEstateModel.realEstate.price <= realEstateModel.realEstate.averagePrice ? 'price-green' : 'price-red'">
+          {{realEstateModel.realEstate.price}} €</h3>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="col col-lg-6 col-md-12 col-sm-12">
+
+    <div class="row" style="margin-top: 10px">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h4 class="accordion-header" style="background-color: #FFE4B5; padding: 0 5px;">Karakteristike</h4>
+            <div class="accordion-collapse collapse show">
+              <div class="accordion-body characteristics">
+                <input type="checkbox" [checked]="realEstateModel.realEstate.balcony" disabled> Terasa
+                <input type="checkbox" [checked]="realEstateModel.realEstate.lodge" disabled> Lođa
+                <input type="checkbox" [checked]="realEstateModel.realEstate.frenchBalcony" disabled> Franc. balkon
+                <input type="checkbox" [checked]="realEstateModel.realEstate.elevator" disabled> Lift
+                <input type="checkbox" [checked]="realEstateModel.realEstate.basement" disabled> Podrum
+                <input type="checkbox" [checked]="realEstateModel.realEstate.garage" disabled> Garaža
+                <input type="checkbox" [checked]="realEstateModel.realEstate.garden" disabled> Sa baštom
+                <input type="checkbox" [checked]="realEstateModel.realEstate.airconditioner" disabled> Klima
+                <input type="checkbox" [checked]="realEstateModel.realEstate.internet" disabled> Internet
+                <input type="checkbox" [checked]="realEstateModel.realEstate.intercom" disabled> Interfon
+                <input type="checkbox" [checked]="realEstateModel.realEstate.telephone" disabled> Telefon
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="accordion">
+          <div class="accordion-item basics" style="width: 100%;">
+            <h4 class="col-lg-4 col-md-4 col-sm-4 accordion-header" style="background-color: #FFE4B5; padding: 0 5px;">
+              Tip: {{realEstateModel.realEstateTypeString}}</h4>
+            <h4 class="col-lg-4 col-md-4 col-sm-4 accordion-header" style="background-color: #FFE4B5; padding: 0 5px;">
+              Kvadratura: {{realEstateModel.realEstate.squareMeters}} m2</h4>
+            <h4 class="col-lg-4 col-md-4 col-sm-4 accordion-header" style="background-color: #FFE4B5; padding: 0 5px;">
+              Soba: {{realEstateModel.realEstate.numberOfRooms}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 10px">
+      <div class="col-lg-12 col-md-12 col-sm-12 information">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <p>Oglašivač: {{realEstateModel.addedBy.username}}</p>
+          <p>Godina izgradnje: {{realEstateModel.realEstate.yearBuilt}}</p>
+          <p>Stanje nekretnine: {{realEstateModel.realEstate.condition}}</p>
+          <p>Tip grejanja: {{realEstateModel.realEstate.heating}}</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <p>Sprat: {{realEstateModel.realEstate.floor}}</p>
+          <p>Ukupna spratnost: {{realEstateModel.realEstate.maxFloors}}</p>
+          <p>Parking: {{realEstateModel.realEstate.parking}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-4"></div>
+      <div class="col-lg-4 col-md-4 col-sm-6"></div>
+      <div class="col-lg-4 col-md-4 col-sm-6">
+        <button (click)="addToFavorites(realEstateModel.realEstate.id)" class="btn btn-primary"
+          style="margin: 10px 0;">Dodaj u
+          omiljene</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="accordion">
+        <div class="accordion-item">
+          <h4 class="accordion-header" style="background-color: #FFE4B5; padding: 0 5px;">Opis</h4>
+          <div class="accordion-collapse collapse show">
+            <div class="accordion-body characteristics">
+              <p>{{realEstateModel.realEstate.description}}</p>
+              <p class="avg-price">Prosečna cena na lokaciji: {{realEstateModel.realEstate.averagePrice}} €/m2</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col col-lg-12 col-md-12 col-sm-12">
+  Podaci o oglašivaču <svg *ngIf="!realEstateModel.showAdvertiserData"
+    (click)="changeShowAdvertiserData(realEstateModel.showAdvertiserData)" xmlns="http://www.w3.org/2000/svg" width="16"
+    height="16" fill="currentColor" class="bi bi-file-plus" viewBox="0 0 16 16">
+    <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z" />
+    <path
+      d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+  </svg>
+  <svg *ngIf="realEstateModel.showAdvertiserData" (click)="changeShowAdvertiserData(realEstateModel.showAdvertiserData)"
+    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-minus"
+    viewBox="0 0 16 16">
+    <path d="M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
+    <path
+      d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" />
+  </svg>
+  <div *ngIf="realEstateModel.showAdvertiserData" class="advertiser-data">
+    Ime i prezime: {{realEstateModel.addedBy.firstName}} {{realEstateModel.addedBy.lastName}} <br>
+    <div *ngIf="realEstateModel.agency == ''">
+      Kontakt telefon: {{realEstateModel.addedBy.phoneNumber}}
+    </div>
+    <div *ngIf="realEstateModel.agency != ''">
+      Naziv agencije: {{realEstateModel.addedBy.agency}} <br>
+      Adresa: {{realEstateModel.addedBy.agencyAddress}}<br>
+      Grad: {{realEstateModel.addedBy.agencyCity}}<br>
+      PIB: {{realEstateModel.addedBy.agencyPIB}}<br>
+      Broj licence agenta: {{realEstateModel.addedBy.licenseNo}}
+    </div>
+  </div>
+</div>
+
+<div style="height: 20px;"></div>

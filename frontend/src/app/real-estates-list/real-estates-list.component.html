@@ -1,0 +1,28 @@
+<div *ngIf="realEstates?.length > 0">
+  <div class="container real-estate" style="margin-bottom: 5px;" *ngFor="let realEstateModel of realEstates">
+    <div class="row">
+      <div class="col col-12">
+        <h2><a routerLink="/realEstate/{{realEstateModel.realEstate.id}}">{{realEstateModel.realEstate.name}}</a>
+        </h2>
+        <h3>
+          {{realEstateModel.locationName}}/{{realEstateModel.microlocationName}}/{{realEstateModel.realEstate.address}}
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-12">
+        <div>
+          <div style=" margin-top: 2px;"><b>Kvadratura:</b> {{realEstateModel.realEstate.squareMeters}} m2</div>
+          <div style="margin-top: 2px;"><b>Sprat:</b> {{realEstateModel.realEstate.floor}} od
+            {{realEstateModel.realEstate.maxFloors}}</div>
+          <div style="margin-top: 2px;"><b>Cena nekretnine:</b> {{realEstateModel.realEstate.price}} €</div>
+          <div style="margin-top: 2px;"><b>Prosečna cena na lokaciji:</b> {{realEstateModel.realEstate.averagePrice}} €
+          </div>
+          <div style="margin-top: 2px;"><b>Opis:</b> {{realEstateModel.realEstate.description}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height: 5px;"></div>
+</div>
+<span *ngIf="realEstates?.length == 0">Nema rezultata za zadate kriterijume.</span>

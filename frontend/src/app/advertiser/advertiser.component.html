@@ -1,0 +1,42 @@
+<div class="col col-lg-12 col-md-12 col-sm-12">
+  <div class="row">
+    <form>
+      <table
+        class="table table-bordered table-sm table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm"
+        *ngIf="realEstates.length > 0">
+        <tr>
+          <th colspan="3" scope="col">Naziv nekretnine</th>
+          <th colspan="3" scope="col">Cena nekretnine</th>
+          <th colspan="3" scope="col"></th>
+          <th colspan="3" scope="col"></th>
+        </tr>
+        <tr *ngFor="let realEstate of realEstates">
+          <td colspan="3">{{realEstate.name}}</td>
+          <td colspan="3">{{realEstate.price}} €</td>
+          <td colspan="3">
+            <div style="margin: 0; padding: 0;">
+              <button (click)="change(realEstate.id)" class="btn btn-outline-primary">Izmeni</button>
+            </div>
+          </td>
+          <td colspan="3">
+            <div *ngIf="realEstate.sold === true" style="color: green; margin: 0; padding: 0;">
+              <span style="font-size: 15px;"><b>Prodato</b></span>
+            </div>
+            <div *ngIf="realEstate.sold === false" style="margin: 0; padding: 0;">
+              <button (click)="sold(realEstate.id)" class="btn btn-outline-success">Označi kao prodato</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div *ngIf="realEstates.length == 0">
+        Nemate objavljenih nekretnina
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="col col-lg-2 col-md-3 col-sm-6" style="margin-left: 10px; max-width: 95%;">
+  <div class="row">
+    <a routerLink="/newRealEstate/{{userId}}" class="btn btn-primary">Unesite nov oglas</a>
+  </div>
+</div>

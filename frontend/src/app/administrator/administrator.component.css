@@ -1,0 +1,19 @@
+.red-color {
+  color: red;
+}
+
+@media only screen and (min-width: 391px) {
+  .new-agency {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .new-agency {
+    margin-top: 10px;
+  }
+}
+
+.red-text {
+  color: red;
+}

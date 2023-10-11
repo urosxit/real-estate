@@ -1,0 +1,111 @@
+<form action="javascript:alert(grecaptcha.getResponse(widgetId1));">
+  <table style="margin: 5px;">
+    <tr>
+      <td>Ime:</td>
+      <td>
+        <input type="text" name="firstName" [(ngModel)]="firstName" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td>Prezime:</td>
+      <td>
+        <input type="text" name="lastName" [(ngModel)]="lastName" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td>Korisničko ime:</td>
+      <td>
+        <input type="text" name="username" [(ngModel)]="username" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td>Lozinka:</td>
+      <td>
+        <input type="password" name="password" [(ngModel)]="password" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td>Potvrda lozinke:</td>
+      <td>
+        <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td>Grad:</td>
+      <td>
+        <select name="location" [(ngModel)]="location" class="form-control">
+          <option *ngFor="let location of locations">{{location.name}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+    <tr>
+      <td>Datum rođenja:</td>
+      <td>
+        <input type="date" name="birthDate" [(ngModel)]="birthDate" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td>Kontakt telefon:</td>
+      <td>
+        <input type="text" name="phoneNumber" [(ngModel)]="phoneNumber" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td>E-mail:</td>
+      <td>
+        <input type="text" name="email" [(ngModel)]="email" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td>Tip korisnika: </td>
+      <td class="form-check">
+        <input type="radio" value="buyer" name="userType" [(ngModel)]="userType" class="form-check-input"> Kupac
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="form-check">
+        <input type="radio" value="advertiser" name="userType" [(ngModel)]="userType" class="form-check-input">
+        Oglašivač
+      </td>
+    </tr>
+    <tr *ngIf="userType == 'advertiser'">
+      <td>Agencija:</td>
+      <td>
+        <select name="agency" [(ngModel)]="agency" class="form-control">
+          <option *ngFor="let agency of agencies">{{agency.name}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr *ngIf="userType == 'advertiser'">
+      <td>Broj licence agenta:</td>
+      <td>
+        <input type="text" name="licenseNo" [(ngModel)]="licenseNo" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td>Upload profilne slike:</td>
+      <td>
+        <input type="file" name="profileImage" accept="image/png, image/jpg" (change)="onFileChanged($event)" required
+          class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" [formGroup]="recaptchaGroup">
+        <ngx-recaptcha2 #recaptcha [siteKey]="siteKey" formControlName="recaptcha">
+        </ngx-recaptcha2>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button (click)="register()" [disabled]="!recaptchaGroup.valid" class="btn btn-primary">Registracija</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<div *ngIf='invalidDataMessage' class="invalid-data">{{invalidDataMessage}}</div>
+<div *ngIf='invalidProfileImage' class="invalid-data">{{invalidProfileImage}}</div>
+<div *ngIf='responseData' class="invalid-data">{{responseData}}</div>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>

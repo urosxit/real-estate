@@ -1,0 +1,200 @@
+<div class="col col-lg-12 col-md-12 col-sm-12">
+  <div class="row">
+    <form>
+      <table style="margin: 5px;">
+        <tr>
+          <td>Naziv:</td>
+          <td>
+            <input type="text" name="name" [(ngModel)]="name" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Tip nekretnine:</td>
+          <td>
+            <select name="realEstateType" [(ngModel)]="realEstateType" class="form-control">
+              <option *ngFor="let realEstateType of realEstateTypes">{{realEstateType.name}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Lokacija:</td>
+          <td>
+            <select name="location" [(ngModel)]="location" class="form-control">
+              <option *ngFor="let location of locations">{{location.name}}</option>
+            </select> </td>
+        </tr>
+        <tr>
+          <td>Mikrolokacija:</td>
+          <td>
+            <select name="microlocation" [(ngModel)]="microlocation" class="form-control">
+              <option *ngFor="let microlocation of microlocations">{{microlocation.name}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Adresa:</td>
+          <td>
+            <input type="text" name="address" [(ngModel)]="address" class="form-control">
+          </td>
+        </tr>
+        <tr>
+        <tr>
+          <td>Kvadratura:</td>
+          <td>
+            <input type="number" name="squareMeters" [(ngModel)]="squareMeters" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Broj soba:</td>
+          <td>
+            <select name="numberOfRooms" [(ngModel)]="numberOfRooms" class="form-control">
+              <option *ngFor="let numberOfRooms of numberOfRoomsArray">{{numberOfRooms}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Cena:</td>
+          <td>
+            <input type="number" name="price" [(ngModel)]="price" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Godina izgradnje: </td>
+          <td>
+            <input type="number" name="yearBuilt" [(ngModel)]="yearBuilt" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Stanje nekretnine:</td>
+          <td>
+            <select name="condition" [(ngModel)]="condition" class="form-control">
+              <option *ngFor="let availableCondition of conditions">{{availableCondition}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Tip grejanja: </td>
+          <td>
+            <select name="heating" [(ngModel)]="heating" class="form-control">
+              <option *ngFor="let availableHeating of heatings">{{availableHeating}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Sprat:</td>
+          <td>
+            <input type="number" name="floor" [(ngModel)]="floor" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Ukupna spratnost:</td>
+          <td>
+            <input type="number" name="maxFloors" [(ngModel)]="maxFloors" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Parking:</td>
+          <td>
+            <input type="text" name="parking" [(ngModel)]="parking" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="balcony" (change)="balcony = !balcony" class="form-check-input"> Terasa
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="lodge" (change)="lodge = !lodge" class="form-check-input"> Lođa
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="frenchBalcony" (change)="frenchBalcony = !frenchBalcony"
+              class="form-check-input"> Franc. balkon
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="elevator" (change)="elevator = !elevator" class="form-check-input">
+            Lift
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="basement" (change)="basement = !basement" class="form-check-input"> Podrum
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="garage" (change)="garage = !garage" class="form-check-input"> Garaža
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="garden" (change)="garden = !garden" class="form-check-input"> Sa baštom
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="airconditioner" (change)="airconditioner = !airconditioner"
+              class="form-check-input"> Klima
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="internet" (change)="internet = !internet" class="form-check-input">
+            Internet
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="intercom" (change)="intercom = !intercom" class="form-check-input">
+            Interfon
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="form-check">
+            <input type="checkbox" [checked]="telephone" (change)="telephone = !telephone" class="form-check-input">
+            Telefon
+          </td>
+        </tr>
+        <tr>
+          <td>Opis:</td>
+          <td>
+            <textarea name="description" [(ngModel)]="description" class="form-control"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>Slike:</td>
+          <td>
+            <input type="file" name="images" multiple accept="image/png, image/jpg" (change)="onFileChanged($event)"
+              required class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Javni prevozi:</td>
+          <td>
+            <select name="selectedTransportation" [(ngModel)]="selectedTransportation" multiple class="form-control">
+              <option *ngFor="let publicTransportation of publicTransportations" value={{publicTransportation}}>
+                {{publicTransportation}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button (click)="addNewRealEstate()" class="btn btn-primary" style="margin-top: 5px;">Dodaj novu
+              nekretninu</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+<div class="col col-lg-12 col-md-12 col-sm-12">
+  <div class="row">
+    <div *ngIf='invalidImagesMessage' class="invalid-data">{{invalidImagesMessage}}</div>
+    <div *ngIf='invalidDataMessage' class="invalid-data">{{invalidDataMessage}}</div>
+  </div>
+</div>

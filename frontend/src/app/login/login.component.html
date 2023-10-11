@@ -1,0 +1,26 @@
+<div class="col-12 first-row">
+  <form>
+    <table>
+      <div class="form-group">
+        <tr>
+          <td>Korisničko ime:</td>
+          <td>
+            <input class="form-control" type="text" name="username" [(ngModel)]="username">
+          </td>
+        </tr>
+        <tr>
+          <td>Lozinka:</td>
+          <td>
+            <input class="form-control" type="password" name="password" [(ngModel)]="password">
+          </td>
+        </tr>
+      </div>
+      <tr>
+        <td colspan="2">
+          <button (click)="logIn()" class="btn btn-primary">Log in</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <div *ngIf='invalidDataMessage' class="invalid-data">{{invalidDataMessage}}</div>
+</div>

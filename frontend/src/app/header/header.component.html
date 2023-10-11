@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <span class="navbar-brand" href="#">Prodaja nekretnina</span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="">Početna</a>
+      </li>
+
+      <li *ngIf='!isUserLoggedIn' class="nav-item">
+        <a class="nav-link" routerLink="register">Registracija</a>
+      </li>
+      <li *ngIf='!isUserLoggedIn' class="nav-item">
+        <a class="nav-link" routerLink="login">Log in</a>
+      </li>
+      <li *ngIf='isUserLoggedIn' class="nav-item">
+        <a class="nav-link" routerLink="{{myProfile}}">Moj profil</a>
+      </li>
+      <li *ngIf='isUserLoggedIn' class="nav-item">
+        <a class="nav-link" routerLink="changePassword">Promeni lozinku</a>
+      </li>
+      <li *ngIf='isUserLoggedIn' class="nav-item">
+        <a class="nav-link" routerLink="" (click)="logout()">Log out</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>

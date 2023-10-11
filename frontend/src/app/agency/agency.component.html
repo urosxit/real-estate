@@ -1,0 +1,39 @@
+<form>
+  <table>
+    <tr>
+      <td>Naziv:</td>
+      <td>
+        <input class="form-control" type="text" name="name" [(ngModel)]="name">
+      </td>
+    </tr>
+    <tr>
+      <td>Adresa:</td>
+      <input class="form-control" type="text" name="address" [(ngModel)]="address">
+    </tr>
+    <tr>
+      <td>Grad:</td>
+      <td>
+        <select class="form-control" name="location" [(ngModel)]="location">
+          <option *ngFor="let location of locations">{{location.name}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Kontakt telefon:</td>
+      <td>
+        <input class="form-control" type="text" name="phoneNumber" [(ngModel)]="phoneNumber">
+      </td>
+    </tr>
+    <tr>
+      <td>PIB:</td>
+      <input class="form-control" type="text" name="pib" [(ngModel)]="pib">
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button (click)='addNewAgency()' class="btn btn-primary" style="margin-top: 5px;">Dodaj agenciju</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<div *ngIf='invalidDataMessage' class="invalid-data">{{invalidDataMessage}}</div>
+<div *ngIf='successMessage' class="success-data">{{successMessage}}</div>

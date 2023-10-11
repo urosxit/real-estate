@@ -1,0 +1,11 @@
+.first-row {
+  margin-top: 20px !important;
+}
+
+.invalid-data {
+  color: red;
+}
+
+.valid-data {
+  color: green;
+}

@@ -1,0 +1,53 @@
+<div class="col col-lg-12">
+  <div class="row">
+    <form>
+      <table
+        class="table table-bordered table-sm table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+        <tr>
+          <th scope="col">Korisničko ime</th>
+          <th scope="col">Mejl</th>
+          <th scope="col">Ime</th>
+          <th scope="col">Prezime</th>
+          <th scope="col">Datum rođenja</th>
+          <th scope="col">Grad</th>
+          <th scope="col">Broj telefona</th>
+          <th scope="col">Agencija</th>
+          <th scope="col">Broj licence</th>
+          <th scope="col">Tip korisnika</th>
+          <th scope="col" colspan="4"></th>
+        </tr>
+        <tr *ngFor='let user of users'>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.username}}</td>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.email}}</td>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.firstName}}</td>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.lastName}}</td>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.birthDate}}</td>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.city}}</td>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.phoneNumber}}</td>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.agency}}</td>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.licenseNo}}</td>
+            <td [ngClass]="user.denied === false ? 'green-text' : 'red-text'">{{user.userType}}</td>
+          <td>
+            <button *ngIf='user.waitingApproval' (click)="accept(user.username)"
+              class="btn btn-outline-success">Prihvati</button>
+          </td>
+          <td>
+            <button *ngIf='user.waitingApproval' (click)="reject(user.username)"
+              class="btn btn-outline-warning">Odbij</button>
+          </td>
+          <td>
+            <button (click)="edit(user.username)" class="btn btn-outline-info">Izmeni</button>
+          </td>
+          <td>
+            <button (click)="delete(user.username)" class="btn btn-outline-danger">Obriši</button>
+          </td>
+        </tr>
+      </table>
+      <button (click)="addNewUser()" class="btn btn-dark">Dodaj novog korisnika</button>
+      <button (click)="addNewAgency()" class="btn btn-dark new-agency">Dodaj novu agenciju</button>
+    </form>
+
+    <app-register *ngIf='addNewUserFlag'></app-register>
+    <app-agency *ngIf='addNewAgencyFlag' style="margin-top:10px"></app-agency>
+  </div>
+</div>

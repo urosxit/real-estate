@@ -1,0 +1,66 @@
+<div class="col-12">
+  <p class="first-row">Dobrodošli {{user.firstName}}!</p>
+  <p>Pretražite nekretnine u Vašoj blizini:</p>
+</div>
+
+<div class="col-12">
+  <form>
+    <table>
+      <div class="form-group">
+        <tr>
+          <td>
+            Tip nekretnine:
+          </td>
+          <td>
+            <select name="realEstateType" [(ngModel)]="realEstateType" required class="form-control">
+              <option *ngFor="let realEstateType of realEstateTypes">{{realEstateType.name}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Lokacija:
+          </td>
+          <td>
+            <select name="chosenCities" [(ngModel)]="chosenCities" multiple class="form-control">
+              <option *ngFor="let city of cities">{{city.fullLocation}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Cena do:
+          </td>
+          <td>
+            <input type="text" name="maxPrice" [(ngModel)]="maxPrice" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Kvadratura od:
+          </td>
+          <td>
+            <input type="fromSquareMt" name="fromSquareMt" [(ngModel)]="fromSquareMt" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Minimalan broj soba:</td>
+          <td>
+            <select name="minNumberOfRooms" [(ngModel)]="minNumberOfRooms" class="form-control">
+              <option *ngFor="let minNumberOfRooms of numberOfRooms">{{minNumberOfRooms}}</option>
+            </select>
+          </td>
+        </tr>
+      </div>
+      <tr>
+        <td colspan="2">
+          <button (click)="search()" class="btn btn-primary">Pretraži</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<span>{{validationMessage}}</span>
+<div class="col col-lg-6 col-md-9 col-sm-12 real-estates-list">
+  <app-real-estates-list [realEstates]='realEstates'></app-real-estates-list>
+</div>
